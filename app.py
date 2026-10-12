@@ -3,7 +3,20 @@ import random
 import time
 import streamlit as st
 
-# Built-in word lists
+# =========================================================
+# 1. PAGE CONFIGURATION (Changes Tab & PWA Icons)
+# =========================================================
+st.set_page_config(
+    page_title="ROHGUARD 2.0",
+    page_icon="🛡️",  # Custom digital shield icon for browser tabs & installed apps
+    layout="wide",
+)
+
+# Render logo & visual hero image in sidebar/body
+st.sidebar.markdown("# 🛡️ ROHGUARD 2.0")
+st.sidebar.caption("Digital Defense Suite - Tech Fair MVP")
+
+# Built-in word lists for Zero-Dependency Operation
 POSITIVE_WORDS = {
     "awesome",
     "amazing",
@@ -102,14 +115,8 @@ COMEBACK_TEMPLATES = [
     ),
 ]
 
-# Page configuration
-st.set_page_config(
-    page_title="ROHGUARD 2.0 - Science Fair Edition",
-    page_icon="🛡️",
-    layout="wide",
-)
-
-st.title("🛡️ ROHGUARD 2.0 Digital Defense & Safety Suite")
+# Custom Interface Logo Banner
+st.markdown("## 🛡️ ROHGUARD 2.0 — DIGITAL DEFENSE & SAFETY SUITE")
 st.caption(
     "Proactive Risk Mitigation System | Real-Time Packet Filter | Decoy Threat"
     " Isolation"
