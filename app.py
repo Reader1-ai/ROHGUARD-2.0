@@ -498,8 +498,8 @@ with tab_metrics:
 
     st.divider()
     st.subheader("💡 Key Innovation Highlights for Judges")
-    st.markdown(""")
+    st.markdown("""
     - **Hybrid AI & Heuristic Architecture:** Uses Gemini 3.8 Flash for deep contextual understanding while retaining a zero-dependency local rule engine as an immediate offline fallback.
     - **Context-Aware Passive-Aggression Detection:** Flags modern roasts and backhanded compliments (*"no offense but"*, *"actually smart for once"*) that standard dictionaries miss.
     - **Integrated Defense:** Combines client-side behavioral text analysis with local network packet monitoring and honeypot threat isolation.
-    """
+    """)
