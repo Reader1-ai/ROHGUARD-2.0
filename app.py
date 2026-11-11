@@ -29,7 +29,7 @@
                             )
                             if res and res.text:
                                 response = res
-                                active_model_used = model_name  # Save active model name!
+                                active_model_used = model_name
                                 break
                         except Exception:
                             continue
@@ -74,54 +74,3 @@
             if not ai_used:
                 with st.spinner("Scanning via Local Rules Engine..."):
                     time.sleep(0.05)
-                    text_lower = post_draft.lower()
-                    words = re.findall(r"\b\w+\b", text_lower)
-
-                    matched_pos = [w for w in words if w in POSITIVE_WORDS]
-                    matched_neg = [w for w in words if w in MODERN_TOXIC_TERMS]
-                    matched_phrases = [
-                        p for p in MODERN_ROAST_PHRASES if p in text_lower
-                    ]
-                    matched_back = [
-                        p for p in BACKHANDED_PHRASES if p in text_lower
-                    ]
-
-                    all_flagged = list(
-                        set(matched_neg + matched_phrases + matched_back)
-                    )
-                    flagged_str = (
-                        ", ".join(all_flagged) if all_flagged else "None"
-                    )
-
-                    base_score = 0
-                    if matched_back:
-                        base_score += len(matched_back) * 40
-                    if matched_phrases:
-                        base_score += len(matched_phrases) * 35
-                    if matched_neg:
-                        base_score += len(matched_neg) * 30
-                    if matched_pos and not matched_back:
-                        base_score -= len(matched_pos) * 15
-
-                    score = max(0, min(99, base_score))
-
-                    # Force minimum warning score if toxic words or roasts are flagged
-                    if all_flagged and score < 50:
-                        score = 75
-
-                    if matched_back:
-                        verdict = (
-                            "🎭 Backhanded Compliment Detected! Passive-aggressive"
-                            " shade identified."
-                        )
-                    elif score >= 50:
-                        verdict = (
-                            "Warning! Toxic terms or roasts detected in draft."
-                        )
-                    elif matched_pos and score < 30:
-                        verdict = "Splendid! Safe and positive message."
-                    else:
-                        verdict = "Neutral content detected."
-
-                    comeback = random.choice(COMEBACK_TEMPLATES)
-                    latency = round((time.time() - start_time) * 1000, 2)
