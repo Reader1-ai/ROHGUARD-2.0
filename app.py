@@ -125,7 +125,7 @@ MODERN_TOXIC_TERMS = {
     "washed",
 }
 
-MODERN_ROAST_PHRASES = [
+MODERN_ROAST_PHRASES = []
     "touch grass",
     "side eye",
     "crash out",
